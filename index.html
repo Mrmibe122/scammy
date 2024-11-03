@@ -10,8 +10,14 @@
     <script src="script.js" defer></script>
 </head>
 <body>
+    <div class="container1" id="keyScreen">
+        <h2>Enter Your Key</h2>
+        <input type="text" id="keyInput" placeholder="Enter key here">
+        <button onclick="checkKey()">Submit</button>
+        <p id="keyMessage" style="color: red; display: none;">Invalid key. Please try again.</p>
+    </div>
     <div class="container">
-        <div class="main-menu" id="mainMenu">
+        <div class="main-menu" id="mainMenu"style="display: none";>
             <img src="logo2.png" alt="Logo" class="logo">
             <h1>Welcome to Dark Miner</h1>
             <div class="selection-grid">
@@ -78,7 +84,7 @@
     </div>
 
     <!-- Bottom menu bar -->
-    <div class="bottom-menu">
+    <div class="bottom-menu"  style="display: none;">
         <img src="search.png" alt="Icon A" class="bottom-icon" aria-label="Icon A" id="search" onclick="makeWhite(this)">
         <img src="uptrend.png" alt="Icon B" class="bottom-icon" aria-label="Icon B" onclick="makeWhite(this)" >
         <img src="settings.png" alt="Icon C" class="bottom-icon" aria-label="Icon C" onclick="makeWhite(this)">
