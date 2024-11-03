@@ -1,102 +1,88 @@
-let hiInterval;
-const conversionRates = {
-    BTC: 34000, // Updated conversion rates for BTC
-    ETH: 2000,  // Updated conversion rates for ETH
-    LTC: 90,    // Updated conversion rates for LTC
-    ADA: 0.5,   // Updated conversion rates for ADA
-    XRP: 0.4,   // Updated conversion rates for XRP
-};
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Dark Miner">
+    <title>Dark Miner</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <div class="main-menu" id="mainMenu">
+            <img src="logo2.png" alt="Logo" class="logo">
+            <h1>Welcome to Dark Miner</h1>
+            <div class="selection-grid">
+                <button class="selection-button" id="option1" aria-label="Select Option 1" onclick="startGame()">
+                    <img src="icon1.png" alt="Icon 1" class="icon">
+                    <h12>Btc</h2>
+                        <br>
+                        <h12>Money found: $1,293</h2>
+                </button>
+                <button class="selection-button" id="option2" aria-label="Select Option 2" onclick="startGame()">
+                    <img src="icon2.png" alt="Icon 2" class="icon">
+                    <h12>Ltc</h2>
+                    <br>
+                    <h12>Money found: $5443</h2>
+                </button>
+            
+                <button class="selection-button" id="option3" aria-label="Select Option 3" onclick="startGame()">
+                    <img src="icon3.png" alt="Icon 3" class="icon">
+                    <h12>Bnb</h2>
+                        <br>
+                        <h12>Money found: $195</h2>
+                </button>
+                <button class="selection-button" id="option4" aria-label="Select Option 4" onclick="startGame()">
+                    <img src="icon4.png" alt="Icon 4" class="icon">
+                    <h12>Trn</h2>
+                        <br>
+                        <h12>Money found: $11</h2>
+                </button>
+                <button class="selection-button" id="option5" aria-label="Select Option 5" onclick="startGame()">
+                    <img src="icon5.png" alt="Icon 1" class="icon">
+                    <h12>Eth</h2>
+                        <br>
+                        <h12>Money found: $18,345</h2>
+                </button>
+                <button class="selection-button" id="option6" aria-label="Select Option 6" onclick="startGame()">
+                    <img src="icon6.png" alt="Icon 2" class="icon">
+                    <h12>Sol</h2>
+                        <br>
+                        <h12>Money found: $985</h2>
+                </button>
+                <button class="selection-button" id="option7" aria-label="Select Option 7" onclick="startGame()">
+                    <img src="icon7.png" alt="Icon 3" class="icon">
+                    <h12>Xrp</h2>
+                        <br>
+                        <h12>Money found: $0</h2>
+                </button>
+                <button class="selection-button" id="option8" aria-label="Select Option 8" onclick="startGame()">
+                    <img src="icon8.png" alt="Icon 4" class="icon">
+                    <h12>Ada</h2>
+                        <br>
+                        <h12>Money found: $18</h2>
+                </button>
+            </div>
+        </div>
 
-const positiveBalanceWallets = []; // Array to store wallets with positive balances
-const maxWallets = 9; // Maximum number of wallets to display in the top box
-let walletHistory = []; // Array to keep track of all wallets
+        <div class="game-screen" id="gameScreen" style="display: none;">
+            <div class="output-box" id="outputBox"></div>
+            <button class="action-button" id="startButton" onclick="startHi()">Start</button>
+            <button class="action-button" id="stopButton" onclick="stopHi()">Stop</button>
+            <button class="action-button" id="backGame" onclick="backGame()">Back</button>
+        </div>
+        <div class="money" id="moneyFoundScreen" style="display: none;">
+        </div>
+    </div>
 
-function startGame() {
-    document.getElementById('mainMenu').style.display = 'none';
-    document.getElementById('gameScreen').style.display = 'block';
-    document.getElementById('moneyFoundScreen').style.display = 'block';
-}
-
-function startHi() {
-    if (hiInterval) clearInterval(hiInterval);
-    hiInterval = setInterval(() => {
-        displayWordsAndBalances();
-    }, 200);
-}
-
-function stopHi() {
-    clearInterval(hiInterval); // Stop the interval
-}
-
-function getRandomWords(wordList) {
-    const shuffledWords = wordList.sort(() => Math.random() - 0.5);
-    return shuffledWords.slice(0, 12).join(", "); // Join the 12 words into a single string
-}
-
-function displayWordsAndBalances() {
-    const randomWords = getRandomWords(wordList);
-    const balance = getRandomBalance();
-
-    // Update the output box with the current balance and words
-    updateOutputBox(randomWords, balance);
-
-    // Update the positive balance wallets
-    updatePositiveBalances(randomWords, balance);
-}
-
-function getRandomBalance() {
-    // Random balance generation with a low chance
-    return Math.random() < 0.05 ? (Math.random() * 100).toFixed(2) : 0; // 5% chance for balance > 0
-}
-
-function updateOutputBox(words, balance) {
-    const outputBox = document.getElementById('outputBox');
-
-    // Clear the output box for the new entry
-    const newWallet = `Wallet: Balance: $${balance} | ${words}`;
-    walletHistory.push(newWallet);
-
-    // Keep only the last 9 wallets in history
-    if (walletHistory.length > maxWallets) {
-        walletHistory.shift(); // Remove the oldest wallet if we exceed maxWallets
-    }
-
-    // Update the output box with current wallet history
-    outputBox.innerHTML = walletHistory.join('<br>');
-}
-
-function updatePositiveBalances(words, balance) {
-    const moneyBox = document.getElementById('moneyFoundScreen');
-
-    // Check if balance is greater than 0 to add to positive balances
-    if (balance > 0) {
-        const cryptoType = getRandomCryptoType(); // Get random crypto type
-        const cryptoValue = (balance / conversionRates[cryptoType]).toFixed(4); // Convert balance to crypto
-
-        // Add to positive balances array if balance is greater than 0
-        positiveBalanceWallets.push({ words, balance });
-
-        // Update the money box with current positive balances
-        moneyBox.innerHTML = positiveBalanceWallets.map(({ words, balance }) =>
-            `Balance: $${balance} | ${words} | ${(balance / conversionRates[getRandomCryptoType()]).toFixed(4)} ${cryptoType}`
-        ).join('<br>');
-    } else {
-        // If balance is 0, do not update the money box
-        moneyBox.innerHTML = positiveBalanceWallets.map(({ words, balance }) =>
-            `Balance: $${balance} | ${words} `
-        ).join('<br>');
-    }
-}
-
-function getRandomCryptoType() {
-    const cryptoTypes = Object.keys(conversionRates);
-    const randomIndex = Math.floor(Math.random() * cryptoTypes.length);
-    return cryptoTypes[randomIndex];
-}
-
-const wordList = [
-    "apple", "banana", "cherry", "date", "fig", "grape",
-    "kiwi", "lemon", "mango", "nectarine", "orange", "papaya",
-    "quince", "raspberry", "strawberry", "tangerine", "ugli",
-    "vanilla", "watermelon", "xigua", "yellowfruit", "zucchini"
-];
+    <!-- Bottom menu bar -->
+    <div class="bottom-menu">
+        <img src="search.png" alt="Icon A" class="bottom-icon" aria-label="Icon A" id="search" onclick="makeWhite(this)">
+        <img src="uptrend.png" alt="Icon B" class="bottom-icon" aria-label="Icon B" onclick="makeWhite(this)" >
+        <img src="settings.png" alt="Icon C" class="bottom-icon" aria-label="Icon C" onclick="makeWhite(this)">
+        <img src="chat.png" alt="Icon D" class="bottom-icon" aria-label="Icon D" onclick="makeWhite(this)">
+    </div>
+</body>
+</html>
