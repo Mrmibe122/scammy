@@ -1,0 +1,154 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #333; /* Dark gray background */
+    color: #fff; /* White text for contrast */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    flex-grow: 1;
+    max-width: 1000px;
+}
+
+/* Center the logo and make it larger */
+.logo {
+    width: 300px;
+    margin-bottom: 10px;
+}
+
+/* Larger heading */
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+}
+
+/* Button grid styles */
+.selection-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+.selection-button{
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 30px;
+    font-size: 1.5em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+/* Larger buttons with more padding */
+.action-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 30px;
+    font-size: 1.5em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+    display: inline;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.selection-button:hover, .action-button:hover {
+    background-color: #0056b3;
+}
+
+/* Larger icons inside buttons */
+.icon {
+    margin-right: 15px;
+    height: 36px;
+    width: 36px;
+}
+
+/* Output box in the game screen */
+.output-box {
+    background-color: #fff;
+    color: #000;
+    border-radius: 10px;
+    padding: 30px;
+    width: 90%;
+    max-width: 700px;
+    height: 400px;
+    overflow-y: auto;
+    margin: 30px auto;
+    font-size: 1.25em;
+}
+.money {
+    background-color: #fff;
+    color: #000;
+    border-radius: 10px;
+    padding: 30px;
+    width: 90%;
+    max-width: 700px;
+    height: 400px;
+    overflow-y: auto;
+    margin: 30px auto;
+    font-size: 1.25em;
+}
+
+/* Bottom menu bar */
+.bottom-menu {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #222;
+    padding: 15px 0;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.bottom-icon {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2em;
+    }
+
+    .selection-button, .action-button {
+        font-size: 1.25em;
+        padding: 20px;
+    }
+
+    .logo {
+        width: 150px;
+    }
+
+    .bottom-icon {
+        width: 40px;
+        height: 40px;
+    }
+}

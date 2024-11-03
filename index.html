@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Miner</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <div class="main-menu" id="mainMenu">
+            <img src="logo2.png" alt="Logo" class="logo">
+            <h1>Welcome to Dark Miner</h1>
+            <div class="selection-grid">
+                <button class="selection-button" id="option1" aria-label="Select Option 1" onclick="startGame()">
+                    <img src="icon1.png" alt="Icon 1" class="icon">
+                    <h12>Btc</h2>
+                        <br>
+                        <h12>Money found: $1,293</h2>
+                </button>
+                <button class="selection-button" id="option2" aria-label="Select Option 2" onclick="startGame()">
+                    <img src="icon2.png" alt="Icon 2" class="icon">
+                    <h12>Ltc</h2>
+                    <br>
+                    <h12>Money found: $5443</h2>
+                </button>
+            
+                <button class="selection-button" id="option3" aria-label="Select Option 3" onclick="startGame()">
+                    <img src="icon3.png" alt="Icon 3" class="icon">
+                    <h12>Bnb</h2>
+                        <br>
+                        <h12>Money found: $195</h2>
+                </button>
+                <button class="selection-button" id="option4" aria-label="Select Option 4" onclick="startGame()">
+                    <img src="icon4.png" alt="Icon 4" class="icon">
+                    <h12>Trn</h2>
+                        <br>
+                        <h12>Money found: $11</h2>
+                </button>
+                <button class="selection-button" id="option5" aria-label="Select Option 5" onclick="startGame()">
+                    <img src="icon5.png" alt="Icon 1" class="icon">
+                    <h12>Eth</h2>
+                        <br>
+                        <h12>Money found: $18,345</h2>
+                </button>
+                <button class="selection-button" id="option6" aria-label="Select Option 6" onclick="startGame()">
+                    <img src="icon6.png" alt="Icon 2" class="icon">
+                    <h12>Sol</h2>
+                        <br>
+                        <h12>Money found: $985</h2>
+                </button>
+                <button class="selection-button" id="option7" aria-label="Select Option 7" onclick="startGame()">
+                    <img src="icon7.png" alt="Icon 3" class="icon">
+                    <h12>Xrp</h2>
+                        <br>
+                        <h12>Money found: $0</h2>
+                </button>
+                <button class="selection-button" id="option8" aria-label="Select Option 8" onclick="startGame()">
+                    <img src="icon8.png" alt="Icon 4" class="icon">
+                    <h12>Ada</h2>
+                        <br>
+                        <h12>Money found: $18</h2>
+                </button>
+            </div>
+        </div>
+
+        <div class="game-screen" id="gameScreen" style="display: none;">
+            <div class="output-box" id="outputBox"></div>
+            <button class="action-button" id="startButton" onclick="startHi()">Start</button>
+            <button class="action-button" id="stopButton" onclick="stopHi()">Stop</button>
+            <button class="action-button" id="backGame" onclick="backGame()">Back</button>
+        </div>
+        <div class="money" id="moneyFoundScreen" style="display: none;">
+        </div>
+    </div>
+
+    <!-- Bottom menu bar -->
+    <div class="bottom-menu">
+        <img src="search.png" alt="Icon A" class="bottom-icon" aria-label="Icon A" id="search" onclick="makeWhite(this)">
+        <img src="uptrend.png" alt="Icon B" class="bottom-icon" aria-label="Icon B" onclick="makeWhite(this)" >
+        <img src="settings.png" alt="Icon C" class="bottom-icon" aria-label="Icon C" onclick="makeWhite(this)">
+        <img src="chat.png" alt="Icon D" class="bottom-icon" aria-label="Icon D" onclick="makeWhite(this)">
+    </div>
+</body>
+</html>
